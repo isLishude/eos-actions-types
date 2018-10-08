@@ -19,18 +19,6 @@ interface ICreate {
   };
 }
 
-interface ITransferToken {
-  account: "eosio.token";
-  name: "transfer";
-  data: {
-    from: string;
-    to: string;
-    // asset
-    quantity: string;
-    memo: string;
-  };
-}
-
 interface IIssue {
   account: "eosio.token";
   name: "issue";
