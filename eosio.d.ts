@@ -1,6 +1,6 @@
 /** spell-checker: disable */
 
-type account_name = string;
+export type account_name = string;
 
 type permission_name = string;
 
@@ -13,49 +13,49 @@ type weight_type = number;
 // type bytes = string;
 
 // "1.0000 EOS"
-type asset = string;
+export type asset = string;
 
 type public_key = string;
 
-interface ITypeAuthority {
+export interface ITypeAuthority {
   threshold: number;
   keys: ITypeKeyWeight[];
   account: ITypePermissionLevelWeight[];
   waits: ITypeWaitWeight[];
 }
 
-interface ITypePermissionLevel {
+export interface ITypePermissionLevel {
   actor: account_name;
   permission_name: account_name;
 }
 
-interface ITypeKeyWeight {
+export interface ITypeKeyWeight {
   key: public_key;
   weight: weight_type;
 }
 
-interface ITypePermissionLevelWeight {
+export interface ITypePermissionLevelWeight {
   permission: ITypePermissionLevel;
   weight: weight_type;
 }
 
-interface ITypeWaitWeight {
+export interface ITypeWaitWeight {
   wait_sec: number;
   weight: weight_type;
 }
 
-interface ITypeBidName {
+export interface ITypeBidName {
   bidder: account_name;
   newname: account_name;
   bid: asset;
 }
 
-interface ITypeBidRefund {
+export interface ITypeBidRefund {
   bidder: account_name;
   newname: account_name;
 }
 
-interface ITypeBlockChainParam {
+export interface ITypeBlockChainParam {
   max_block_net_usage: number;
   target_block_net_usage_pct: number;
   max_transaction_net_usage: number;
@@ -83,7 +83,7 @@ interface ITypeBlockChainParam {
 // As an authorized party I {{ signer }} wish to exercise
 // the authority of {{ creator }} to create a new account on this system named {{ name }} such that the new account's
 // owner public key shall be {{ owner }} and the active public key shall be {{ active }}
-interface INewAccount {
+export interface INewAccount {
   account: "eosio";
   name: "newaccount";
   data: {
@@ -96,7 +96,7 @@ interface INewAccount {
   };
 }
 
-interface ISetCode {
+export interface ISetCode {
   account: "eosio";
   name: "setcode";
   data: {
@@ -110,7 +110,7 @@ interface ISetCode {
   };
 }
 
-interface ISetABI {
+export interface ISetABI {
   account: "eosio";
   name: "setabi";
   data: {
@@ -118,7 +118,7 @@ interface ISetABI {
     abi: string;
   };
 }
-interface IUpdateAuth {
+export interface IUpdateAuth {
   account: "eosio";
   name: "updateauth";
   data: {
@@ -130,7 +130,7 @@ interface IUpdateAuth {
   };
 }
 
-interface IDeleteAuth {
+export interface IDeleteAuth {
   account: "eosio";
   name: "deleteauth";
   data: {
@@ -139,7 +139,7 @@ interface IDeleteAuth {
   };
 }
 
-interface ILinkAuth {
+export interface ILinkAuth {
   account: "eosio";
   name: "linkauth";
   data: {
@@ -150,7 +150,7 @@ interface ILinkAuth {
   };
 }
 
-interface IUnlinkAuth {
+export interface IUnlinkAuth {
   account: "eosio";
   name: "unlinkauth";
   data: {
@@ -162,7 +162,7 @@ interface IUnlinkAuth {
 
 // The `{{ canceldelay }}` action cancels an existing delayed transaction.
 // As an authorized party I {{ signer }} wishto invoke the authority of {{ canceling_auth }} to cancel the transaction with ID {{ trx_id }}.
-interface ICancelDelay {
+export interface ICancelDelay {
   account: "eosio";
   name: "canceldelay";
   data: {
@@ -171,7 +171,7 @@ interface ICancelDelay {
   };
 }
 
-//  interface IOnError {
+// export interface IOnError {
 //   sender_id: number;
 //   sent_trx: bytes;
 // }
@@ -185,7 +185,7 @@ interface ICancelDelay {
 // {{buyer}} acknowledges that the price of RAM may increase or decrease over time according to supply and demand.
 // {{buyer}} acknowledges that RAM is non-transferable.
 // {{buyer}} acknowledges RAM currently in use by their account cannot be sold until it is freed and that freeing RAM may be subject to terms of other contracts.
-interface IBuyRAMByte {
+export interface IBuyRAMByte {
   account: "eosio";
   name: "buyrambytes";
   data: {
@@ -205,7 +205,7 @@ interface IBuyRAMByte {
 // {{buyer}} acknowledges that the price of RAM may increase or decrease over time according to supply and demand.
 // {{buyer}} acknowledges that RAM is non-transferrable.
 // {{buyer}} acknowledges RAM currently in use by their account cannot be sold until.it is freed and that freeing RAM may be subject to terms of other contracts.
-interface IBuyRAM {
+export interface IBuyRAM {
   account: "eosio";
   name: "buyram";
   data: {
@@ -217,7 +217,7 @@ interface IBuyRAM {
 
 // nThe `{{ sellram }}` action sells unused RAM for tokens.
 // As an authorized party I {{ signer }} wish to sell {{ bytes }} of unused RAM from account {{ account }}.
-interface ISellRam {
+export interface ISellRam {
   account: "eosio";
   name: "sellram";
   data: {
@@ -231,7 +231,7 @@ interface ISellRam {
 // As an authorized party I {{ signer }} wish to stake {{ stake_cpu_quantity }} for CPU and {{ stake_net_quantity }} for bandwidth from the liquid tokens of {{ from }} for the use of delegatee {{ to }}.
 // {{if transfer }} It is {{ transfer }} that I wish these tokens to become immediately owned by the delegatee.{{/if}}
 // As signer I stipulate that, if I am not the beneficial owner of these tokens,I have proof that Iu2019ve been authorized to take this action by their beneficial owner(s).
-interface IDelegateBrandwidth {
+export interface IDelegateBrandwidth {
   account: "eosio";
   name: "delegatebw";
   data: {
@@ -250,7 +250,7 @@ interface IDelegateBrandwidth {
 // The intent of the `{{ undelegatebw }}` action is to unstake tokens from CPU and/or bandwidth.
 // As an authorized party I {{ signer }} wish to unstake {{ unstake_cpu_quantity }} from CPU and {{ unstake_net_quantity }} from bandwidth from the tokens owned by {{ from }} previously delegated for the use of delegatee {{ to }}.
 // If I as signer am not the beneficial owner of these tokens I stipulate I have proof that Iu2019ve been authorized to take this action by their beneficial owner(s).
-interface IUndelegateBrandwidth {
+export interface IUndelegateBrandwidth {
   account: "eosio";
   name: "undelegatebw";
   data: {
@@ -263,7 +263,7 @@ interface IUndelegateBrandwidth {
 
 // The intent of the `{{ refund }}` action is to return previously unstaked tokens to an account after the unstaking period has elapsed.
 // As an authorized party I {{ signer }} wish to have the unstaked tokens of {{ owner }} returned.
-interface IRefund {
+export interface IRefund {
   account: "eosio";
   name: "refund";
   data: {
@@ -305,7 +305,7 @@ interface IRefund {
 // I, {{producer}}, agree not to produce blocks before my scheduled time unless I have received all blocks produced by the prior producer.
 // I, {{producer}}, agree not to publish blocks with timestamps more than 500ms in the future unless the prior block is more than 75% full by either CPU or network bandwidth metrics.
 // I, {{producer}}, agree not to set the RAM supply to more RAM than my nodes contain and to resign if I am unable to provide the RAM approved by 2/3+ producers, as shown in the system parameters.
-interface IRegProducer {
+export interface IRegProducer {
   account: "eosio";
   name: "regproducer";
   data: {
@@ -316,7 +316,7 @@ interface IRegProducer {
   };
 }
 
-interface ISetRam {
+export interface ISetRam {
   account: "eosio";
   name: "setram";
   data: {
@@ -325,7 +325,7 @@ interface ISetRam {
 }
 
 // Sets the number of new bytes of ram to create per block and resyncs bancor base connector balance
-interface ISetRAMRate {
+export interface ISetRAMRate {
   account: "eosio";
   name: "setramrate";
   data: {
@@ -335,7 +335,7 @@ interface ISetRAMRate {
 
 // The `{{ bidname }}` action places a bid on a premium account name,in the knowledge that the high bid will purchase the name.
 // As an authorized party I {{ signer }} wish to bid on behalf of {{ bidder }} the amount of {{ bid }} toward purchase of the account name {{ newname }}
-interface IBidName {
+export interface IBidName {
   account: "eosio";
   name: "bidname";
   data: {
@@ -345,7 +345,7 @@ interface IBidName {
   };
 }
 
-interface IBidRefund {
+export interface IBidRefund {
   account: "eosio";
   name: "bidrefund";
   data: {
@@ -356,7 +356,7 @@ interface IBidRefund {
 
 // The `{{ unregprod }}` action unregisters a previously registered block producer candidate.
 // As an authorized party I {{ signer }} wish to unregister the block producer candidate {{ producer }},rendering that candidate no longer able to receive votes
-interface IUnregprod {
+export interface IUnregprod {
   account: "eosio";
   name: "unregprod";
   data: {
@@ -364,7 +364,7 @@ interface IUnregprod {
   };
 }
 
-interface IRegProxy {
+export interface IRegProxy {
   account: "eosio";
   name: "regproxy";
   data: {
@@ -378,7 +378,7 @@ interface IRegProxy {
 // If I am not the beneficial owner of these shares I stipulate I have proof that Iu2019ve been authorized to vote these shares by their beneficial owner(s).
 // I stipulate I have not and will not accept anything of value in exchange for these votes, on penalty of confiscation of these tokens, and other penalties.
 // I acknowledge that using any system of automatic voting, re-voting, or vote refreshing, or allowing such a system to be used on my behalf or on behalf of another,is forbidden and doing so violates this contract.
-interface IVoteProducer {
+export interface IVoteProducer {
   account: "eosio";
   name: "voteproducer";
   data: {
@@ -390,7 +390,7 @@ interface IVoteProducer {
 
 // The `{{ claimrewards }}` action allows a block producer (active or standby) to claim the system rewards due them for producing blocks and receiving votes.
 // As an authorized party I {{ signer }} wish to have the rewards earned by {{ owner }} deposited into the {{ owner }} account.
-interface IClaimRewards {
+export interface IClaimRewards {
   account: "eosio";
   name: "claimrewards";
   data: {
@@ -398,7 +398,7 @@ interface IClaimRewards {
   };
 }
 
-interface ISetPriv {
+export interface ISetPriv {
   account: "eosio";
   name: "setpriv";
   data: {
@@ -407,7 +407,7 @@ interface ISetPriv {
   };
 }
 
-interface IRmVProducer {
+export interface IRmVProducer {
   account: "eosio";
   name: "rmvproducer";
   data: {
@@ -415,7 +415,7 @@ interface IRmVProducer {
   };
 }
 
-interface ISetAccountLimits {
+export interface ISetAccountLimits {
   account: "eosio";
   name: "setalimits";
   data: {
@@ -426,7 +426,7 @@ interface ISetAccountLimits {
   };
 }
 
-interface ISetGlobalLimits {
+export interface ISetGlobalLimits {
   account: "eosio";
   name: "setglimits";
   data: {
@@ -437,7 +437,7 @@ interface ISetGlobalLimits {
 // The `{{ setprods }}` action creates a new schedule of active producers, who will produce blocks in the order given.
 // THIS IS A SYSTEM COMMAND NOT AVAILABLE FOR DIRECT ACCESS BY USERS.
 // As an authorized party I {{ signer }} wish to set the rotation of producers to be {{ schedule }}.
-interface ISetProducers {
+export interface ISetProducers {
   account: "eosio";
   name: "setprods";
   data: {
@@ -448,7 +448,7 @@ interface ISetProducers {
   };
 }
 
-interface ISetParams {
+export interface ISetParams {
   account: "eosio";
   name: "setparams";
   data: {
@@ -456,7 +456,7 @@ interface ISetParams {
   };
 }
 
-interface IReqAuth {
+export interface IReqAuth {
   account: "eosio";
   name: "reqauth";
   data: {
