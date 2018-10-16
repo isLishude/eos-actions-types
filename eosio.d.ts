@@ -394,6 +394,7 @@ export interface IRegProducer {
   };
 }
 
+// only system call
 export interface ISetRam {
   account: "eosio";
   name: "setram";
@@ -438,6 +439,14 @@ export interface IBidRefund {
     bidder: account_name;
     newname: account_name;
   };
+  inline_actions: [
+    {
+      from: "eosio.names";
+      to: account_name;
+      quantity: asset;
+      memo: "refund bid on name";
+    }
+  ];
 }
 
 // The `{{ unregprod }}` action unregisters a previously registered block producer candidate.
@@ -485,6 +494,7 @@ export interface IClaimRewards {
 }
 
 export interface ISetPriv {
+  private: true;
   account: "eosio";
   name: "setpriv";
   data: {
