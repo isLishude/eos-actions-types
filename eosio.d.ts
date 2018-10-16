@@ -194,6 +194,28 @@ export interface IBuyRAMByte {
     // uint32
     bytes: number;
   };
+  inline_actions: [
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: account_name;
+        to: "eosio.ram";
+        quanlity: asset;
+        memo: "buy ram";
+      };
+    },
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: account_name;
+        to: "eosio.ramfee";
+        quanlity: asset;
+        memo: "ram fee";
+      };
+    }
+  ];
 }
 
 // This action will attempt to reserve about {{quant}} worth of RAM on behalf of {{receiver}}.
@@ -213,9 +235,31 @@ export interface IBuyRAM {
     receiver: account_name;
     quant: asset;
   };
+  inline_actions: [
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: account_name;
+        to: "eosio.ram";
+        quanlity: asset;
+        memo: "buy ram";
+      };
+    },
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: account_name;
+        to: "eosio.ramfee";
+        quanlity: asset;
+        memo: "ram fee";
+      };
+    }
+  ];
 }
 
-// nThe `{{ sellram }}` action sells unused RAM for tokens.
+// The `{{ sellram }}` action sells unused RAM for tokens.
 // As an authorized party I {{ signer }} wish to sell {{ bytes }} of unused RAM from account {{ account }}.
 export interface ISellRam {
   account: "eosio";
@@ -225,6 +269,28 @@ export interface ISellRam {
     // uint64
     bytes: number;
   };
+  inline_actions: [
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: "eosio.ram";
+        to: account_name;
+        quanlity: asset;
+        memo: "sell ram";
+      };
+    },
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: account_name;
+        to: "eosio.ramfee";
+        quanlity: asset;
+        memo: "ram fee";
+      };
+    }
+  ];
 }
 
 // The intent of the `{{ delegatebw }}` action is to stake tokens for bandwidth and/or CPU and optionally transfer ownership.
@@ -245,6 +311,18 @@ export interface IDelegateBrandwidth {
     // but implicit boolean type
     transfer: boolean;
   };
+  inline_actions: [
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: account_name;
+        to: "eosio.stake";
+        quanlity: asset;
+        memo: "stake bandwidth";
+      };
+    }
+  ];
 }
 
 // The intent of the `{{ undelegatebw }}` action is to unstake tokens from CPU and/or bandwidth.
@@ -343,6 +421,14 @@ export interface IBidName {
     newname: account_name;
     bid: asset;
   };
+  inline_actions: [
+    {
+      from: account_name;
+      to: "eosio.names";
+      quantity: asset;
+      memo: "bid name xxx";
+    }
+  ];
 }
 
 export interface IBidRefund {
