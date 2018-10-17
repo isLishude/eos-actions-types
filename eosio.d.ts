@@ -347,6 +347,18 @@ export interface IRefund {
   data: {
     owner: account_name;
   };
+  inline_actions: [
+    {
+      account: "eosio.token";
+      name: "transfer";
+      data: {
+        from: "eosio.stake";
+        to: account_name;
+        quantity: asset;
+        memo: "unstake";
+      };
+    }
+  ];
 }
 
 // The intent of the `{{ regproducer }}` action is to register an account as a BP candidate.
