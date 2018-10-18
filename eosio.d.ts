@@ -201,7 +201,7 @@ export interface IBuyRAMByte {
       data: {
         from: account_name;
         to: "eosio.ram";
-        quanlity: asset;
+        quantity: asset;
         memo: "buy ram";
       };
     },
@@ -211,7 +211,7 @@ export interface IBuyRAMByte {
       data: {
         from: account_name;
         to: "eosio.ramfee";
-        quanlity: asset;
+        quantity: asset;
         memo: "ram fee";
       };
     }
@@ -242,7 +242,7 @@ export interface IBuyRAM {
       data: {
         from: account_name;
         to: "eosio.ram";
-        quanlity: asset;
+        quantity: asset;
         memo: "buy ram";
       };
     },
@@ -252,7 +252,7 @@ export interface IBuyRAM {
       data: {
         from: account_name;
         to: "eosio.ramfee";
-        quanlity: asset;
+        quantity: asset;
         memo: "ram fee";
       };
     }
@@ -276,7 +276,7 @@ export interface ISellRam {
       data: {
         from: "eosio.ram";
         to: account_name;
-        quanlity: asset;
+        quantity: asset;
         memo: "sell ram";
       };
     },
@@ -286,7 +286,7 @@ export interface ISellRam {
       data: {
         from: account_name;
         to: "eosio.ramfee";
-        quanlity: asset;
+        quantity: asset;
         memo: "ram fee";
       };
     }
@@ -318,7 +318,7 @@ export interface IDelegateBrandwidth {
       data: {
         from: account_name;
         to: "eosio.stake";
-        quanlity: asset;
+        quantity: asset;
         memo: "stake bandwidth";
       };
     }
