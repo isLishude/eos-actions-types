@@ -309,7 +309,7 @@ export interface IDelegateBrandwidth {
     // with rpc call is 0(false) or 1(true)
     // so it's really `number` type
     // but implicit boolean type
-    transfer: boolean;
+    transfer: number;
   };
   inline_actions: [
     {
