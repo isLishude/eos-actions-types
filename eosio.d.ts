@@ -305,10 +305,9 @@ export interface IDelegateBrandwidth {
     receiver: account_name;
     stake_net_quantity: asset;
     stake_cpu_quantity: asset;
-    // Sender can be `undelegatebw`
-    // with rpc call is 0(false) or 1(true)
-    // so it's really `number` type
-    // but implicit boolean type
+    // If transfer == true, then 'receiver' can unstake to their account
+    // Else 'from' can unstake at any time.
+    // require(!transfer || from != receiver)
     transfer: number;
   };
   inline_actions: [
@@ -545,16 +544,16 @@ export interface ISetGlobalLimits {
 // The `{{ setprods }}` action creates a new schedule of active producers, who will produce blocks in the order given.
 // THIS IS A SYSTEM COMMAND NOT AVAILABLE FOR DIRECT ACCESS BY USERS.
 // As an authorized party I {{ signer }} wish to set the rotation of producers to be {{ schedule }}.
-export interface ISetProducers {
-  account: "eosio";
-  name: "setprods";
-  data: {
-    schedule: Array<{
-      producer_name: account_name;
-      block_signing_key: public_key;
-    }>;
-  };
-}
+// export interface ISetProducers {
+//   account: "eosio";
+//   name: "setprods";
+//   data: {
+//     schedule: Array<{
+//       producer_name: account_name;
+//       block_signing_key: public_key;
+//     }>;
+//   };
+// }
 
 export interface ISetParams {
   account: "eosio";
