@@ -13,7 +13,7 @@ type weight_type = number;
 // type bytes = string;
 
 // "1.0000 EOS"
-export type asset = string;
+export type asset = "1.0001 EOS";
 
 type public_key = string;
 
