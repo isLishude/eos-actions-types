@@ -490,7 +490,7 @@ export interface IVoteProducer {
   data: {
     voter: account_name;
     proxy: account_name;
-    producer: account_name[];
+    producers: account_name[];
   };
 }
 
