@@ -1,1 +1,1 @@
-# eos-actions-types
+EOS transaction's actions type-defines by TypeScript
